@@ -1,6 +1,7 @@
 # FlightBookingApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+This is the front end for the Flight booking system.This app will communicate with microservices for user interactions and transactions.
 
 ## Development server
 
