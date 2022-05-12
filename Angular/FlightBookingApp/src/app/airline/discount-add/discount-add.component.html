@@ -1,0 +1,26 @@
+<app-admin-menu ></app-admin-menu>
+<div class="container">
+    <h6>Add Discount Code</h6>
+    <div class="container">
+        <div class="form-group">
+            <label for="name">Dicount Code</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="discount.discountCode" name="name" />
+        </div>
+        
+        <div class="form-group">
+            <label for="discamnt">Dicount Amount</label>
+            <input type="number" min="1" class="form-control" id="discamnt" required [(ngModel)]="discount.discountValue" name="discamnt" />
+        </div>
+        
+       
+
+        <br>
+        <div class="row">
+            <button type="submit" (click)="saveDiscount()" class="btn btn-success btn-md">Submit</button>
+            <button  routerLink="/discount-list" class="btn btn-dark btn-md">Cancel</button>   
+        </div> 
+
+            
+    </div>
+    
+</div>

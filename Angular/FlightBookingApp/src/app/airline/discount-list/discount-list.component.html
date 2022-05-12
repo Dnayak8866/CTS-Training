@@ -1,0 +1,27 @@
+<app-admin-menu ></app-admin-menu>
+<div class="container mt-5">
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <button class="btn btn-primary" routerLink="/discount-add">Add Discount</button>
+    </div>
+    <h2 class="mb-3 text-center">Available Discounts</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Discount Code</th>
+          <th scope="col">Dicount Amount</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let discount of discounts">
+       
+          <td>{{ discount.discountCode }}</td>
+          <td>{{ discount.discountValue}}</td>
+        
+          <td>
+            <span class="edit btn-success btn-sm btn" routerLink="/edit-discount/{{ discount.id }}">Edit</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

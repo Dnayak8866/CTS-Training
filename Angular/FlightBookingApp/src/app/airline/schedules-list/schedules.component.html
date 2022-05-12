@@ -1,0 +1,55 @@
+<app-admin-menu activeTab="schedulesTab"></app-admin-menu>
+<p>schedules works!</p>
+<div class="container mt-5">
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <button class="btn btn-primary" routerLink="/add-schedule">
+        <i class="bi-plus-circle"></i><span>Add Schedule</span>
+      </button>    
+    </div>
+    <h2 class="mb-3 text-center">Flight Schedules</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Flight Number</th>
+          <th scope="col">From Place</th>
+          <th scope="col">To Place</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <!-- <th scope="col">Schedule Days</th> -->
+          <th scope="col">Instrument Used</th>
+          <th scope="col">Bussiness Seat</th>
+          <th scope="col">Non Bussiness Seat</th>
+          <th scope="col">Ticket Cost</th>
+          <th scope="col">No of Rows</th>
+          <th scope="col">Meal Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inv of flightInventory">
+          <td>{{ inv.id }}</td>
+          <td>{{ inv.flightNumber }}</td>
+          <td>{{ inv.fromPlace}}</td>
+          <td>{{ inv.toPlace }}</td>
+          <td>{{ inv.startDateTime|date:'dd/MM/yyyy hh:mm:ss' }}</td>
+          <td>{{ inv.endDateTime |date:'dd/MM/yyyy hh:mm:ss'}}</td>
+          <!-- <td>{{ inv.scheduleDays }}</td> -->
+          <td>{{ inv.instrumentUsed }}</td>
+          <td>{{ inv.bussinesSteatsCount }}</td>
+          <td>{{ inv.nonBussinesSeatCount }}</td>
+          <td>{{ inv.ticketCost }}</td>
+          <td>{{ inv.noofRows }}</td>
+          <td>{{ inv.mealType }}</td>
+          <td>
+
+            <span
+              class="edit btn-success btn-sm btn"
+              routerLink="/edit-schedule/{{ inv.id }}"
+              >Edit</span>
+            
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

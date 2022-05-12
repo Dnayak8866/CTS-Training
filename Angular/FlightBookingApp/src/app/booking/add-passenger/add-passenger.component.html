@@ -1,0 +1,120 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<app-user-menu></app-user-menu>
+
+<div class="container border shadow rounded">
+    <div class="row">
+        <div class="col m-sm-1">
+            <form [formGroup]="form" (ngSubmit)="addPassenger()">
+                <h2>Add passenger.....</h2>
+
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input [(ngModel)]="passenger.name" formControlName="name" id="name" type="text"
+                        class="form-control">
+                    <div class="alert alert-danger"
+                        *ngIf="form.controls['name'].touched && !form.controls['name'].valid">
+                        <div *ngIf="form.controls['name'].errors && form.controls['name'].errors['required']">Name is
+                            required.</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input [(ngModel)]="passenger.age" formControlName="age" id="age" type="number"
+                        class="form-control">
+                    <div class="alert alert-danger" *ngIf="form.controls['age'].touched && !form.controls['age'].valid">
+                        <div *ngIf="form.controls['age'].errors && form.controls['age'].errors['required']">Age is
+                            required.</div>
+                        <div *ngIf="form.controls['age'].errors && form.controls['age'].errors['min']">Invalid Age.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="meal">Gender</label>
+                    <select class="form-select" formControlName="gender" [(ngModel)]="passenger.gender" id="gender"
+                        name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <!-- <h2>{{ form.valid }}</h2> -->
+                <button class="btn btn-primary m-sm-1" type="submit" [disabled]="!form.valid">Add
+                    Passenger</button>
+
+            </form>
+           
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <select class="form-select" [(ngModel)]="discountValue">
+                                <option [value]="-1"  [selected]="true" >Select Discount</option>
+                                <option *ngFor="let discnt of discounts" [ngValue]="discnt.discountValue">
+                                    {{discnt.discountCode}}</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                    <div class="col">
+                       <button class="btn btn-secondary btn-sm" (click)="applyDiscount()">Apply Discount</button>
+                    </div>
+                    <div class="col"><span>Total Cost: {{totalCost}}</span></div>
+                    <div class="col"><span>Total Seats:{{passengers.length}}</span></div>
+
+
+                </div>
+            
+
+        </div>
+        <div class="col m-sm-1">
+            <h2>Passenger Details...</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let p of passengers;let i=index">
+                    <td>{{p.name}}</td>
+                    <td>{{p.age}}</td>
+                    <td>{{p.gender}}</td>
+                    <td><span class="edit btn-danger btn-sm btn" (click)="removePassenger(i)"><i
+                                class="bi bi-trash"></i></span></td>
+                </tr>
+
+            </table>
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="button" (click)="confirmBooking()" class="btn btn-primary btn-lg">
+            Confirm booking
+        </button>
+    </div>
+
+
+</div>

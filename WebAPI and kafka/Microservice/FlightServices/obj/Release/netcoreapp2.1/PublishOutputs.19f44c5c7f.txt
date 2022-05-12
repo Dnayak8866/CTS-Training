@@ -1,0 +1,13 @@
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.Development.json
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.json
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\FlightServices.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\FlightServices.runtimeconfig.json
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\FlightServices.pdb
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\Remotion.Linq.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\System.Interactive.Async.dll
+D:\TrainingWorkspace\Microservice\FlightServices\obj\Release\netcoreapp2.1\PubTmp\Out\FlightServices.deps.json

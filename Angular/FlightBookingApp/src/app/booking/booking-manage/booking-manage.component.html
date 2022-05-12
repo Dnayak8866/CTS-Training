@@ -1,0 +1,104 @@
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<app-user-menu></app-user-menu>
+
+
+<div class="container mt-5">
+  
+    <h2 class="mb-3 text-center">My bookings....</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">FlightNumber</th>
+          <th scope="col">From</th>
+          <th scope="col">To</th>
+          <th scope="col">Journey Date</th>
+          <th scope="col">Pnr</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of myBookings">
+         
+          <td>{{ booking.flightNumber }}</td>
+          <td>{{ booking.fromPlace }}</td>
+          <td>{{ booking.toPlace }}</td>
+          <td>{{ booking.startDateTime |date:'dd/MM/yyyy'  }}</td>
+          <td>{{ booking.pnr }}</td>       
+          <td *ngIf="booking.isCancelled; else active">Cancelled</td>
+          <ng-template #active><td>Active</td></ng-template>
+          <td>
+        
+            <span class="edit btn-success btn-sm btn m-1" (click)="triggerModal(modalData,booking.pnr)"><i class="bi bi-eye  m-1"></i>View</span>
+            &nbsp;
+            <span  [ngStyle]="booking.isCancelled ? {'display':'none'} : {'display':'block'}"  class="edit btn-danger btn-sm btn m-1" (click)="cancelTicket(booking.pnr)">Cancel</span>
+  
+  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ticket Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+       <div class="row">
+            <div class="col">
+               <p><span class="text-primary">PNR</span>:  {{ticket.pnr}}</p>
+               <p><span class="text-primary">Journey Type: </span>  {{ticket.journeyType}}</p>
+               <p><span class="text-primary">No of Seats:  </span> {{ticket.noofSeats}}</p>
+               <p><span class="text-primary">Total Cost:  </span>{{ticket.totalCost}}</p>
+
+            </div>
+            <div class="col">
+                <div class="col m-sm-1">
+                    <h6>Passenger Details...</h6>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                           
+                        </tr>
+                        <tr *ngFor="let p of passengers;let i=index">
+                            <td>{{p.name}}</td>
+                            <td>{{p.age}}</td>
+                            <td>{{p.gender}}</td>                           
+                        </tr>
+                       
+                    </table>
+        
+        
+        
+                </div>
+            </div>
+       </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>

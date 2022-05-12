@@ -1,0 +1,51 @@
+<app-admin-menu [activeTab]="'airlineTab'"></app-admin-menu>
+
+<div class="container">
+    <h6>Add New Airline</h6>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="saveAirline()">
+            <div class="form-group">
+                <label for="airlinename">Airline Name</label>
+                <input formControlName="airlinename" type="text" class="form-control" id="airlinename" required
+                    [(ngModel)]="airline.name" name="airlinename" />
+                <div class="alert alert-danger" *ngIf="form.controls['airlinename'].touched && !form.controls['airlinename'].valid">
+                    <div *ngIf="form.controls['airlinename'].errors && form.controls['airlinename'].errors['required']">Name is
+                        required.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="number" formControlName="contact" class="form-control" id="contact" required [(ngModel)]="airline.contactNumber"
+                    name="contact" />
+                    <div class="alert alert-danger" *ngIf="form.controls['contact'].touched && !form.controls['contact'].valid">
+                        <div *ngIf="form.controls['contact'].errors && form.controls['contact'].errors['required']">Contact is
+                            required.</div>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <!-- <input type="text-area" class="form-control" id="address" required [(ngModel)]="airline.Address"
+                    name="address" /> -->
+                <textarea formControlName="address" class="form-control" id="address" required [(ngModel)]="airline.address"
+                    name="address"></textarea>
+            </div>
+
+            <br>
+        <div class="row">
+            <button type="submit"  type="submit" [disabled]="!form.valid"  class="btn btn-success btn-md">Submit</button>
+            <button routerLink="/airlines" class="btn btn-dark btn-md">Cancel</button>
+        </div>
+        </form>
+
+
+        
+        
+
+        
+
+
+    </div>
+
+</div>

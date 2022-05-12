@@ -1,0 +1,191 @@
+<app-admin-menu activeTab="schedulesTab"></app-admin-menu>
+<p>schedule-add works!</p>
+
+<div class="container" style="width: 500px;">
+    <h6>Add Flight Schedule</h6>
+    <div class="container">
+        <div class="row">
+            <form [formGroup]="form" (ngSubmit)="saveFlightSchedule()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="flightN">Flight Number</label>
+                            <input formControlName="flightN" type="number" min="1"  class="form-control" id="flightN"
+                                required [(ngModel)]="flightInvt.flightNumber" name="flightN" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['flightN'].touched && !form.controls['flightN'].valid">
+                                <div
+                                    *ngIf="form.controls['flightN'].errors && form.controls['flightN'].errors['required']">
+                                    Flight Number is
+                                    required.</div>
+                                    <div
+                                    *ngIf="form.controls['flightN'].errors && form.controls['flightN'].errors['min']">
+                                   Invalid value.</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="fromP">From Place</label>
+                            <input formControlName="fromP" type="text" class="form-control" id="fromP" required
+                                [(ngModel)]="flightInvt.fromPlace" name="fromP" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['fromP'].touched && !form.controls['fromP'].valid">
+                                <div
+                                    *ngIf="form.controls['fromP'].errors && form.controls['fromP'].errors['required']">
+                                    From Place is
+                                    required.</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input formControlName="srtDate" type="datetime-local" class="form-control" id="startDate" required
+                                [(ngModel)]="flightInvt.startDateTime" name="startDate" />
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="nbS">Non Bussines Steats</label>
+                            <input formControlName="nbS" type="number" min="1"  class="form-control"
+                                id="nbS" required [(ngModel)]="flightInvt.nonBussinesSeatCount" name="nbS" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['nbS'].touched && !form.controls['nbS'].valid">
+                                <div
+                                    *ngIf="form.controls['nbS'].errors && form.controls['nbS'].errors['required']">
+                                    Field is
+                                    required.</div>
+                                    <div
+                                    *ngIf="form.controls['nbS'].errors && form.controls['nbS'].errors['min']">
+                                   Invalid value.</div>
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="form-group">
+                            <label for="instrument">Instrument Used</label>
+                            <input formControlName="instrument" type="text" class="form-control" id="instrument"
+                                required [(ngModel)]="flightInvt.instrumentUsed" name="instrument" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['instrument'].touched && !form.controls['instrument'].valid">
+                                <div
+                                    *ngIf="form.controls['instrument'].errors && form.controls['instrument'].errors['required']">
+                                    Field is
+                                    required.</div>
+                            </div>
+                        </div>
+
+                    
+
+                        <br>
+                        <div class="form-group">
+                            <label for="meal">Meal Type</label>
+
+                            <select formControlName="meal" id="meal" class="form-select"
+                                [(ngModel)]="flightInvt.mealType">
+                               
+                                <option value="Veg">Veg</option>
+                                <option value="Non">Non Veg</option>
+
+                            </select>
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['meal'].touched && !form.controls['meal'].valid">
+                                <div *ngIf="form.controls['meal'].errors && form.controls['meal'].errors['required']">
+                                    Field is
+                                    required.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="airlineName">Select Airline</label>
+                            <select formControlName="airlineName" id="airlineName" name="airlineName" class="form-select" [(ngModel)]="flightInvt.airlineID">
+
+                                <option *ngFor="let airline of airlines; index as i" [ngValue]="airline.id" [selected] = "i === 0" >{{airline.name}}
+                                </option>
+                            </select>
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['airlineName'].touched && !form.controls['airlineName'].valid">
+                                <div
+                                    *ngIf="form.controls['airlineName'].errors &&
+                                    form.controls['airlineName'].errors['required']">
+                                    Please select airlineName.</div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="toPlace">To Place</label>
+                            <input formControlName="toPlace" type="text" class="form-control" id="toPlace" required
+                                [(ngModel)]="flightInvt.toPlace" name="toPlace" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['toPlace'].touched && !form.controls['toPlace'].valid">
+                                <div
+                                    *ngIf="form.controls['toPlace'].errors && form.controls['toPlace'].errors['required']">
+                                    ToPlace is
+                                    required.</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input formControlName="endDate" type="datetime-local" class="form-control" id="endDate" required
+                                [(ngModel)]="flightInvt.endDateTime" name="endDate" />
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="bSeat">Busines Steats</label>
+                            <input required formControlName="bSeat" type="number" min="1"  class="form-control"
+                                id="bSeat" required [(ngModel)]="flightInvt.bussinesSteatsCount" name="bSeat" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['bSeat'].touched && !form.controls['bSeat'].valid">
+                                <div *ngIf="form.controls['bSeat'].errors && form.controls['bSeat'].errors['required']">
+                                    Business seat is
+                                    required.</div>
+                                    <div *ngIf="form.controls['bSeat'].errors && form.controls['bSeat'].errors['min']">
+                                        Invalid value.</div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="ticketCost">Ticket Cost</label>
+                            <input formControlName="ticketCost" min=1 type="number" class="form-control" id="ticketCost"
+                                required [(ngModel)]="flightInvt.ticketCost" name="ticketCost" />
+                            <div class="alert alert-danger"
+                                *ngIf="form.controls['ticketCost'].touched && !form.controls['ticketCost'].valid">
+                                <div
+                                    *ngIf="form.controls['ticketCost'].errors && form.controls['ticketCost'].errors['required']">
+                                    Ticket cost is
+                                    required.</div>
+                                    <div
+                                    *ngIf="form.controls['ticketCost'].errors && form.controls['ticketCost'].errors['min']">
+                                   Invalid value.</div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label for="nrows">No of Rows</label>
+                            <input formControlName="nrows" type="number" min="1" max="100" class="form-control" id="nrows" required
+                                [(ngModel)]="flightInvt.noofRows" name="nrows" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-success btn-md  mt-2" [disabled]="!form.valid">Submit</button>
+                    &nbsp;
+                    <button routerLink="/schedules" class="btn btn-dark btn-md  mt-2">Cancel</button>
+                    &nbsp;
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+    </div>
